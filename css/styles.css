@@ -1,0 +1,664 @@
+/* ==============================
+   VARIÁVEIS E IDENTIDADE VISUAL
+   ============================== */
+
+:root {
+    --petrol-blue: #0B1F33;
+    --petrol-dark: #001845;
+    --orange-vibrant: #FF5E00;
+    --orange-soft: #FF4F00;
+    --white: #ffffff;
+
+    --glass-bg: rgba(0, 59, 70, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.1);
+
+    --gradient-main: linear-gradient(135deg, var(--petrol-dark), var(--petrol-blue));
+    --gradient-accent: linear-gradient(90deg, var(--orange-vibrant), var(--orange-soft));
+
+    --gray-light: rgba(255, 255, 255, 0.1);
+    --gray-medium: rgba(255, 255, 255, 0.2);
+}
+
+/* ==============================
+   RESET E BASE DE APP
+   ============================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* remove scroll global */
+}
+
+body {
+    background: var(--gradient-main);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* ==============================
+   CONTAINER PRINCIPAL (APP)
+   ============================== */
+
+#app-container {
+    width: 100%;
+    height: 100dvh;
+    max-width: 100%;
+    max-height: 100dvh;
+
+    position: relative;
+    overflow: hidden;
+    background-image: url("./img/background-login.png");
+    background-size: cover;
+    background-position: center;
+}
+
+/* Overlay escuro */
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 40, 47, 0.45),
+	rgba(0, 40, 47, 0.55);
+    backdrop-filter: blur(2px);
+    z-index: 1;
+}
+
+/* ==============================
+   TELAS
+   ============================== */
+
+.screen {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    display: none;
+    flex-direction: column;
+
+    overflow: hidden;
+    animation: fadeIn 0.35s ease;
+}
+
+.screen.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ==============================
+   LOGIN
+   ============================== */
+
+.login-header {
+    padding: 40px 30px 0;
+}
+
+.logo {
+    width: 70px;
+}
+
+.login-card {
+    margin: auto 30px;
+    padding: 40px 30px;
+
+    background: rgba(5, 18, 38, 0.55);
+    backdrop-filter: blur(10px);
+    border: 4px solid var(--glass-border);
+    border-radius: 20px;
+
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.app-subtitle {
+    margin-bottom: 25px;
+    font-size: 14px;
+    opacity: 0.6;
+    letter-spacing: 1px;
+}
+
+/* ==============================
+   FORMULÁRIOS
+   ============================== */
+
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 6px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+
+    border-radius: 10px;
+    border: none;
+    outline: none;
+
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+input:focus {
+    box-shadow: 0 0 0 2px var(--orange-vibrant);
+    background: rgba(255,255,255,0.2);
+}
+
+/* ==============================
+   BOTÕES
+   ============================== */
+
+.btn {
+    width: 100%;
+    padding: 18px;
+    border-radius: 10px;
+    border: none;
+
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: var(--gradient-accent);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(255,140,0,0.3);
+}
+
+/* ==============================
+   SOCIAL LOGIN
+   ============================== */
+
+.social-login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0;
+}
+
+.social-divider {
+    font-size: 13px;
+    opacity: 0.4;
+}
+
+.btn-social-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--glass-border);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    background: transparent;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-social-icon:hover {
+    background: rgba(255,255,255,0.08);
+    color: #FF4F00;
+}
+
+/* ==============================
+   LINKS LOGIN
+   ============================== */
+
+.login-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.login-links a {
+    font-size: 13px;
+    text-decoration: none;
+    color: rgba(255,255,255,0.6);
+    transition: 0.3s;
+}
+
+.login-links a:hover {
+    color: var(--orange-vibrant);
+}
+
+/* ==============================
+   HEADER INTERNO
+   ============================== */
+
+.app-header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-header h3 {
+    font-size: 22px;
+}
+
+.text-gradient {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ==============================
+   DASHBOARD / GRID
+   ============================== */
+
+.status-grid {
+    flex: 1;
+    padding: 20px;
+    padding-bottom: 120px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.status-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 180px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,140,0,0.3);
+}
+
+/* ==============================
+   GAUGES
+   ============================== */
+
+.gauge {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: conic-gradient(var(--orange-vibrant) var(--percentage),
+                               rgba(255,255,255,0.1) 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.gauge::before {
+    content: '';
+    width: 70px;
+    height: 70px;
+    background: var(--petrol-dark);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.gauge span {
+    position: relative;
+    z-index: 1;
+    font-weight: bold;
+}
+
+/* ==============================
+   CHAT
+   ============================== */
+
+.chat-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 100px;
+}
+
+.messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 15px;
+    scrollbar-width: none;
+}
+
+.messages::-webkit-scrollbar {
+    display: none;
+}
+
+.msg {
+    padding: 15px 20px;
+    border-radius: 15px;
+    margin-bottom: 12px;
+    max-width: 85%;
+    animation: fadeIn 0.3s ease;
+}
+
+.msg.received {
+    background: rgba(255,255,255,0.1);
+}
+
+.msg.sent {
+    background: var(--orange-vibrant);
+    margin-left: auto;
+}
+
+/* ==============================
+   MAPA
+   ============================== */
+
+.map-container {
+    flex: 1;
+    margin: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--glass-border);
+    background: rgba(255,255,255,0.1);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==============================
+   NAVBAR FIXA
+   ============================== */
+
+.bottom-nav {
+    position: fixed;
+    bottom: env(safe-area-inset-bottom);
+    left: 0;
+    right: 0;
+
+    height: 80px;
+    background: rgba(0,20,25,0.95);
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    border-top: 1px solid var(--glass-border);
+    z-index: 10;
+}
+
+.nav-item {
+    flex: 1;
+    text-align: center;
+    color: #888;
+    font-size: 13px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.nav-item i {
+    font-size: 22px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.nav-item.active {
+    color: var(--orange-vibrant);
+}
+
+/* ==============================
+   UTILITÁRIOS
+   ============================== */
+
+.hidden {
+    display: none !important;
+}
+
+/* =====================================================
+   MODO DE EXIBIÇÃO: LOGIN x APP
+   ===================================================== */
+
+/* Estado inicial */
+body {
+    --app-max-width: 420px;
+}
+
+/* =========================
+   TELAS GRANDES (Tablet+)
+   ========================= */
+@media (min-width: 768px) {
+
+    /* -------- LOGIN -------- */
+    body.mode-login {
+        justify-content: center;
+        align-items: center;
+    }
+
+    body.mode-login #app-container {
+        width: 100%;
+        max-width: var(--app-max-width);
+        height: 90vh;
+        max-height: 900px;
+
+        border-radius: 25px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        overflow: hidden;
+    }
+
+    /* -------- APP LOGADO -------- */
+    body.mode-app {
+        justify-content: stretch;
+        align-items: stretch;
+    }
+
+    body.mode-app #app-container {
+        width: 100vw;
+        height: 100dvh;
+        max-width: 100vw;
+        max-height: 100dvh;
+
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
+
+/* =========================
+   SMART TV / TELAS MUITO GRANDES
+   ========================= */
+@media (min-width: 1366px) {
+
+    body.mode-login {
+        --app-max-width: 520px;
+    }
+
+}
+
+/* =========================
+   MOBILE (sempre app)
+   ========================= */
+@media (max-width: 767px) {
+
+    body {
+        justify-content: stretch;
+        align-items: stretch;
+    }
+
+    #app-container {
+        width: 100vw;
+        height: 100dvh;
+        max-width: 100vw;
+        max-height: 100dvh;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+}
+
+/* ==========================================
+   SMARTWATCH – CORREÇÃO DE SCROLL
+   Telas 162px / 167px
+   ========================================== */
+@media (max-width: 200px), (max-height: 200px) {
+
+    html, body {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    /* Container principal */
+    #app-container {
+        height: 100%;
+        max-height: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Telas internas */
+    .screen,
+    .screen.active {
+        height: auto;
+        min-height: 100%;
+        overflow-y: auto;
+        padding-bottom: 16px;
+    }
+
+    /* Evita corte de botões no final */
+    .screen > *:last-child {
+        margin-bottom: 20px;
+    }
+
+    /* Remove qualquer travamento de scroll herdado */
+    * {
+        overscroll-behavior: contain;
+    }
+}
+
+/* ==========================================
+   SMARTWATCH – AJUSTE DE PROPORÇÃO E UI
+   ========================================== */
+@media (max-width: 200px), (max-height: 200px) {
+
+    /* Tipografia mais compacta */
+    body {
+        font-size: 5px;
+        line-height: 1.2;
+    }
+	
+	#app-container {
+        border-radius: 8px;
+    }
+
+    h1, h2, h3 {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    p, label {
+        font-size: 11px;
+    }
+
+    /* Logo menor */
+    .logo,
+    .logo img {
+        max-width: 70px;
+        margin: 6px auto;
+    }
+
+    /* Layout sempre em coluna */
+    .grid,
+    .row,
+    .columns {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 6px;
+    }
+	
+	.screen:not(#login-screen) {
+        padding: 8px 10px 50px 10px;
+        height: calc(100% - 40px);
+    }
+	
+	.card {
+        min-height: 60px;
+        padding: 8px;
+    }
+
+    /* Inputs e botões compactos */
+    input,
+    select,
+    textarea {
+        height: 32px;
+        padding: 4px 6px;
+        font-size: 11px;
+        border-radius: 8px;
+    }
+
+    button {
+        height: 34px;
+        font-size: 11px;
+        padding: 6px;
+        border-radius: 10px;
+    }
+
+    /* Espaçamento geral */
+    form {
+        gap: 6px;
+    }
+
+    .screen {
+        padding: 8px;
+    }
+
+    /* Links (esqueci senha / cadastro) */
+    .login-links,
+    .login-links a {
+        font-size: 10px;
+        margin-top: 4px;
+    }
+
+}
+
