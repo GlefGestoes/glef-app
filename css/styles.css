@@ -57,7 +57,7 @@ body {
 
     position: relative;
     overflow: hidden;
-    background-image: url("./img/background-login.png");
+    background-image: url("../img/background-login.png");
     background-size: cover;
     background-position: center;
 }
@@ -661,4 +661,5 @@ body {
     }
 
 }
+
 
